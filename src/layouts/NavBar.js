@@ -1,11 +1,14 @@
 import { AppBar, Avatar, Badge, Box, IconButton, Toolbar, Typography } from "@mui/material";
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
-import { useState } from "react";
-import Cart from "../component/Cart";
+import { useContext, useState } from "react";
+import CartItems from "../component/products/cart";
+import { Context } from "../Router";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export default function NavBar() {
 
-    const [card, setCard] = useState(false)
+    const [card, setCard] = useState(false);
+
+    const {users}  = useContext(Context)
 
     return (
         <AppBar position="inline">
@@ -15,13 +18,13 @@ export default function NavBar() {
                 </Typography>
                 <Box display='flex' alignItems='center' position='relative' gap={2}>
 
-                    <Box zIndex='10' position='absolute' top='50px' right='50px' display={card ? 'block' : 'none'} width='800px' height='800px' bgcolor='green'>
-                        <Cart/>
+                    <Box zIndex='10' position='absolute' top='50px' right='50px' display={card ? 'block' : 'none'} padding='20px' width='800px' bgcolor='green'>
+                        <CartItems/>
                     </Box>
 
                     <IconButton onClick={() => { setCard(!card) }}>
-                        <Badge badgeContent={4} color='warning'>
-                            <NotificationsActiveIcon sx={{ color: 'white' }} />
+                        <Badge badgeContent={users.cart.length} color='warning'>
+                            <ShoppingCartIcon sx={{ color: 'white' }} />
                         </Badge>
                     </IconButton>
                     <Avatar sx={{ backgroundColor: 'black' }}>V</Avatar>

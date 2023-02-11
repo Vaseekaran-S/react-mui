@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 import { Outlet } from "react-router-dom";
-import Data from "../component/Data";
-import Head from "../component/Head";
-import Layout from "./Layout";
+import Data from "../component/dashboard/Data";
+import Head from "../component/dashboard/Head";
+import Layout from "../layouts/Layout";
 
 
 export default function Dashboard({children}){

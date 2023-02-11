@@ -1,6 +1,6 @@
 import React from 'react'
-import Layout from '../../views/Layout'
-import Head from '../../component/Head'
+import Layout from '../Layout'
+import Head from '../../component/dashboard/Head'
 
 const Accounts = () => {
   return (

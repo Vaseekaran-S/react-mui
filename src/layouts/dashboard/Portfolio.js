@@ -1,6 +1,6 @@
 import React from 'react'
-import Head from '../../component/Head'
-import Layout from '../../views/Layout'
+import Head from '../../component/dashboard/Head'
+import Layout from '../Layout'
 
 const Portfolio = () => {
   return (
