@@ -5,7 +5,7 @@ import Profile from './views/Profile';
 import Dashboard from './views/Dashboard';
 import Accounts from './layouts/dashboard/Accounts';
 import Portfolio from './layouts/dashboard/Portfolio';
-import { createContext } from 'react';
+import { createContext,useEffect } from 'react';
 import Products from './views/Products';
 import image from './assests/boat.jpg'
 
@@ -13,57 +13,54 @@ export const Context = createContext()
 
 const Router = () => {
 
+//   const [values,setValues] = useState(null)
+
+//   // function api(){
+//   //     fetch('https://fakestoreapi.com/products')
+//   //         .then(res=>res.json())
+//   //         .then(json=>{
+//   //           console.log(json);
+//   //         })
+//   // }
+
+//   async function getUsers() {
+//     let url = 'https://fakestoreapi.com/products';
+//     try {
+//         let res = await fetch(url);
+//         const data = res.json()
+//         console.log(data);
+//         return setValues(data);
+//     } catch (error) {
+//         console.log("ERROR : ",error);
+//     }
+// }
+
+// console.log("Value: ",values);
+// console.log("Values : ",values);
+
+//   useEffect(()=>{
+//       console.log("hello");
+//       getUsers()
+//   })
+
   const [users, setUsers] = useState({
-    cart :[],
-    products : [
-      {
-        id: 1,
-        title: "Boat Head Phones",
-        price: 1999,
-        img : image
-      },
-      {
-        id: 2,
-        title: "USB WIRES",
-        price: 99,
-        img : image
-      },
-      {
-        id: 3,
-        title: "Phones",
-        price: 19999,
-        img : image
-      },
-      {
-        id: 4,
-        title: "Head Phones",
-        price: 999,
-        img : image
-      },
-      {
-        id: 5,
-        title: "SD Cards",
-        price: 999,
-        img : image
-      },
-      {
-        id: 6,
-        title: "SIM",
-        price: 1999,
-        img : image
-      }
-    ]
+    cart: [],
+    products: values
   });
 
 
   const dispatchUserEvent = (actionType, payload) => {
     switch (actionType) {
       case 'ADD_CART':
-        console.log(payload);
-        setUsers({ ...users,cart: [...users.cart, payload] });
+        setUsers({ ...users, cart: [...users.cart, payload] });
         return;
       case 'REMOVE_CART':
-        setUsers(...users,users.cart.filter(product => users.cart.id !== product.id  ));
+        const value = users.cart
+        console.log(value);
+        const final = value.filter(product => (payload.id !== product.id))
+        console.log(final);
+        setUsers({ ...users, cart: final });
+        console.log(users);
         return;
       default:
         return;

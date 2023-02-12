@@ -12,9 +12,10 @@ const CartItems = () => {
     const { users,dispatchUserEvent } = useContext(Context)
 
     function remove(e) {
-        dispatchUserEvent('REMOVE_CART', e)
+        console.log("Remove");
+        dispatchUserEvent('REMOVE_CART', e);
+
     }
-    console.log(users.cart);
 
     return (
         <Box>
@@ -28,7 +29,7 @@ const CartItems = () => {
                             height='50px'
                             sx={{width:'50px', backgroundColor: 'grey' }}
                         />
-                    <Typography>{e.title}</Typography>
+                    <Typography>{e.id} : {e.title}</Typography>
                     <Typography>PRICE : {e.price}</Typography>
                     <Button onClick={(event)=>remove(e)} variant='contained'>Delete</Button>
                 </Box>
