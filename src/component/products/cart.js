@@ -25,11 +25,11 @@ const CartItems = () => {
                       <CardMedia
                             component='img'
                             alt='Image'
-                            image= {e.img}
+                            image= {e.image}
                             height='50px'
                             sx={{width:'50px', backgroundColor: 'grey' }}
                         />
-                    <Typography>{e.id} : {e.title}</Typography>
+                    <Typography>{e.title}</Typography>
                     <Typography>PRICE : {e.price}</Typography>
                     <Button onClick={(event)=>remove(e)} variant='contained'>Delete</Button>
                 </Box>

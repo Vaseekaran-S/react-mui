@@ -11,7 +11,7 @@ const Layout = ({children}) => {
     return (
         
             <Box display='flex'>
-                <SideBar/>
+                <SideBar />
                 <Box flex={6}>
                     <NavBar />
                     {children}

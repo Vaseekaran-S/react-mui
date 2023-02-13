@@ -18,7 +18,7 @@ export default function NavBar() {
                 </Typography>
                 <Box display='flex' alignItems='center' position='relative' gap={2}>
 
-                    <Box zIndex='10' position='absolute' top='50px' right='50px' display={card ? 'block' : 'none'} padding='20px' width='800px' bgcolor='green'>
+                    <Box zIndex='10' position='absolute' top='50px' right='50px' display={card ? 'block' : 'none'} padding='20px' width='800px' bgcolor='grey'>
                         <CartItems/>
                     </Box>
 

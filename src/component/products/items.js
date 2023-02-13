@@ -28,13 +28,13 @@ const Items = () => {
                     {data?.map((e,i) => (
                         <Grid item xs={3} key={i}>
                             <Card sx={{ width: '250px' }}>
-                                <CardHeader title={e.title} />
+                                <CardHeader sx={{overflow:'hidden',textOverflow: 'ellipsis',height:'50px'}} title={e.title} />
                                 <CardMedia
                                     component='img'
                                     alt='Image'
                                     image={e.image}
                                     height='150px'
-                                    sx={{ backgroundColor: 'grey' }}
+                                    sx={{ backgroundColor: 'grey',margin:'10px',display:'inline' }}
                                 />
                                 <CardContent>${e.price}:{e.id}</CardContent>
                                 <CardActions>

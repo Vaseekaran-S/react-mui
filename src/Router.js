@@ -5,7 +5,7 @@ import Profile from './views/Profile';
 import Dashboard from './views/Dashboard';
 import Accounts from './layouts/dashboard/Accounts';
 import Portfolio from './layouts/dashboard/Portfolio';
-import { createContext,useEffect } from 'react';
+import { createContext, useEffect } from 'react';
 import Products from './views/Products';
 import image from './assests/boat.jpg'
 
@@ -13,40 +13,25 @@ export const Context = createContext()
 
 const Router = () => {
 
-//   const [values,setValues] = useState(null)
-
-//   // function api(){
-//   //     fetch('https://fakestoreapi.com/products')
-//   //         .then(res=>res.json())
-//   //         .then(json=>{
-//   //           console.log(json);
-//   //         })
-//   // }
-
-//   async function getUsers() {
-//     let url = 'https://fakestoreapi.com/products';
-//     try {
-//         let res = await fetch(url);
-//         const data = res.json()
-//         console.log(data);
-//         return setValues(data);
-//     } catch (error) {
-//         console.log("ERROR : ",error);
-//     }
-// }
-
-// console.log("Value: ",values);
-// console.log("Values : ",values);
-
-//   useEffect(()=>{
-//       console.log("hello");
-//       getUsers()
-//   })
-
   const [users, setUsers] = useState({
     cart: [],
-    products: values
+    products: []
   });
+
+  function api() {
+    fetch('https://fakestoreapi.com/products')
+      .then(res => res.json())
+      .then(json => {
+        console.log(json);
+        setUsers({...users,products: json})
+      })
+  }
+
+  useEffect(() => {
+    console.log("hello");
+    api()
+    console.log("Data",users);
+  },[])
 
 
   const dispatchUserEvent = (actionType, payload) => {
