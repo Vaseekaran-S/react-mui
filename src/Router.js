@@ -8,6 +8,8 @@ import Portfolio from './layouts/dashboard/Portfolio';
 import { createContext, useEffect } from 'react';
 import Products from './views/Products';
 import image from './assests/boat.jpg'
+import ProductDetails from './layouts/products/productDetails';
+import OrderItem from './component/order';
 
 export const Context = createContext()
 
@@ -15,38 +17,51 @@ const Router = () => {
 
   const [users, setUsers] = useState({
     cart: [],
-    products: []
+    products: [],
+    price : 0
   });
+
+
 
   function api() {
     fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
       .then(json => {
         console.log(json);
-        setUsers({...users,products: json})
+        setUsers({ ...users, products: json })
       })
   }
 
   useEffect(() => {
-    console.log("hello");
     api()
-    console.log("Data",users);
-  },[])
+  }, [])
 
 
   const dispatchUserEvent = (actionType, payload) => {
     switch (actionType) {
+
       case 'ADD_CART':
-        setUsers({ ...users, cart: [...users.cart, payload] });
+
+        const cartItems = users.cart
+        const checkCart = cartItems.includes(payload)
+        setUsers(users.price += payload.price)
+
+        if (!checkCart) {
+          setUsers({ ...users, cart: [...users.cart, payload] });
+        } else {
+          setUsers({ ...users });
+        }
         return;
+
       case 'REMOVE_CART':
+
         const value = users.cart
-        console.log(value);
+        setUsers((users.price -= payload.price).toFixed(2))
+        console.log("Rate : ",users.price);
         const final = value.filter(product => (payload.id !== product.id))
-        console.log(final);
         setUsers({ ...users, cart: final });
-        console.log(users);
         return;
+
       default:
         return;
     }
@@ -62,6 +77,8 @@ const Router = () => {
           <Route path='dashboard/account' element={<Accounts />} />
           <Route path='dashboard/portfolio' element={<Portfolio />} />
           <Route path='components' element={<Products />} />
+          <Route path='components/products/:id' element={<ProductDetails />} />
+          <Route path='components/products/order/:id' element={<OrderItem />} />
 
         </Routes>
       </BrowserRouter>

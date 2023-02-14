@@ -14,7 +14,7 @@ export default function NavBar() {
     const navigate = useNavigate()
 
     return (
-        <Box flex={1} height='100vh' borderRight='1px solid lightGray' sx={{ display: { xs: 'none', sm: 'block' } }}>
+        <Box flex={1} height='100vh' borderRight='1px solid lightGray' sx={{ display: { xs: 'none', sm: 'block' } ,position : 'sticky'}}>
             <Box height='63px' borderBottom='1px solid lightGray'></Box>
             <List disablePadding dense>
                 {data.map(e => {
@@ -35,8 +35,6 @@ export default function NavBar() {
                                 </ListItemText>
                             </ListItemButton>
                         </ListItem>
-
-
                     )
                 })}
             </List>

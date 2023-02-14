@@ -9,45 +9,40 @@ import { Context } from '../../Router';
 
 const CartItems = () => {
 
-    const { users,dispatchUserEvent } = useContext(Context)
+    const { users, dispatchUserEvent } = useContext(Context)
 
     function remove(e) {
         console.log("Remove");
         dispatchUserEvent('REMOVE_CART', e);
+    }
 
+    if(users.cart.length == 0){
+        users.price = 0
     }
 
     return (
         <Box>
+            <Box>
+                <Typography>TOTAL PRICE  : { users.price.toFixed(2) }</Typography>
+            </Box>
+            
             {users.cart?.map(e => (
 
-                <Box display={'flex'} alignItems='center' justifyContent='space-between' padding='20px'>
-                      <CardMedia
+                <>
+                    <Box display={'flex'} alignItems='center' justifyContent='space-between' padding='20px'>
+                        <CardMedia
                             component='img'
                             alt='Image'
-                            image= {e.image}
+                            image={e.image}
                             height='50px'
-                            sx={{width:'50px', backgroundColor: 'grey' }}
+                            sx={{ width: '50px', backgroundColor: 'grey' }}
                         />
-                    <Typography>{e.title}</Typography>
-                    <Typography>PRICE : {e.price}</Typography>
-                    <Button onClick={(event)=>remove(e)} variant='contained'>Delete</Button>
-                </Box>
+                        <Typography>{e.title}</Typography>
+                        <Typography>PRICE : {e.price}</Typography>
+                        <Button onClick={(event) => remove(e)} variant='contained'>Delete</Button>
+                    </Box>
 
-                // <Card sx={{ width: '250px' }}>
-                //     <CardHeader title={e.title} />
-                //     <CardMedia
-                //         component='img'
-                //         alt='Image'
-                //         image="./boat.jpg"
-                //         height='150px'
-                //         sx={{ backgroundColor: 'grey' }}
-                //     />
-                //     <CardContent>$</CardContent>
-                //     <CardActions>
-                //         <Button variant='contained'>Add to Cart</Button>
-                //     </CardActions>
-                // </Card>
+                </>
             ))}
         </Box>
     )
