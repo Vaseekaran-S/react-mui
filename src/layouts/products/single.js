@@ -1,3 +1,4 @@
+import { Remove } from '@mui/icons-material'
 import { Box, Button, Container, List, Rating, Typography } from '@mui/material'
 import { height, Stack } from '@mui/system'
 import React, { useContext, useEffect, useState } from 'react'
@@ -11,6 +12,9 @@ const Single = () => {
 
     const add = (e) => {
         dispatchUserEvent('ADD_CART', e)
+    }
+    const remove = (e) => {
+        dispatchUserEvent('REMOVE_CART',e)
     }
 
     const { id } = useParams()
@@ -35,6 +39,8 @@ const Single = () => {
         console.log('welcome');
         navigate('https://api.whatsapp.com')
     }
+
+    const cartItems = users.cart
 
     return (
         <Box>
@@ -70,7 +76,11 @@ const Single = () => {
                                     <Typography>({e?.rating?.count})</Typography>
                                 </Box>
                                 <Box display='flex' alignItems='center' gap={2}>
-                                    <Button sx={{ width: '200px' }} onClick={(event) => add(e)} variant='contained'>ADD TO CART</Button>
+                                    {(cartItems.includes(e)) ? (
+                                        <Button onClick={(event) => remove(e)} variant='contained'>Remove to Cart</Button>
+                                    ) : (
+                                        <Button onClick={(event) => add(e)} variant='contained'>Add to Cart</Button>
+                                    )}
                                     <Button sx={{ width: '200px' }} onClick={()=>{navigate(`/components/products/order/${id}`)}} variant='contained'>BUY NOW</Button>
                                 </Box>
                             </Stack>

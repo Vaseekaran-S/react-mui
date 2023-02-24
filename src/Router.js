@@ -21,8 +21,6 @@ const Router = () => {
     price : 0
   });
 
-
-
   function api() {
     fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
