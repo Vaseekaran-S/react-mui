@@ -7,9 +7,9 @@ import Accounts from './layouts/dashboard/Accounts';
 import Portfolio from './layouts/dashboard/Portfolio';
 import { createContext, useEffect } from 'react';
 import Products from './views/Products';
-import image from './assests/boat.jpg'
 import ProductDetails from './layouts/products/productDetails';
 import OrderItem from './component/order';
+import Login from './views/Login';
 
 export const Context = createContext()
 
@@ -71,6 +71,7 @@ const Router = () => {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='profile' element={<Profile />} />
+          <Route path='login' element={<Login />} />
           <Route path='dashboard' element={<Dashboard />} />
           <Route path='dashboard/account' element={<Accounts />} />
           <Route path='dashboard/portfolio' element={<Portfolio />} />

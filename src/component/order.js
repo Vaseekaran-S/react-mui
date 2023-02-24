@@ -1,9 +1,18 @@
 import styled from '@emotion/styled'
-import { Box, Button, InputLabel, Stack, TextField, Typography } from '@mui/material'
+import { Box, Button, InputLabel, TextField, Typography } from '@mui/material'
 import React, { useEffect } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Layout from '../layouts/Layout'
 import { useState } from "react";
+
+const MyTextField = styled(TextField)({
+    width:'400px'
+})
+const MyInputLabel = styled(InputLabel)({
+    color:'#1976d2',
+    marginBottom:'10px',
+    marginTop:'30px'
+})
 
 const OrderItem = () => {
 
@@ -25,17 +34,6 @@ const OrderItem = () => {
         api(id)
     }, [])
 
-    
-
-    const MyTextField = styled(TextField)({
-        width:'400px'
-    })
-    const MyInputLabel = styled(InputLabel)({
-        color:'#1976d2',
-        marginBottom:'10px',
-        marginTop:'30px'
-    })
-
     const [name,setName] = useState("");
     const [number,setNumber] = useState("");
     const [address,setAddress] = useState("");
@@ -55,8 +53,16 @@ const OrderItem = () => {
 
     function submit(){
 
-        window.location.href=`https://api.whatsapp.com/send?phone=+919965630426&text=Hi%2C%20I'm%20${name}.%0AI%20want%20the%20following%20product%20from%20you%0APRODUCT%20DETAILS%20%3A-%0ANAME%20%3A%20${title}%0APRICE%20%3A%20Rs.${rate}`
-        
+        if(name==""){
+            alert("Please Enter Your Name")
+        }else if(number==""){
+            alert("Please Enter Your Mobile Number")
+        }else if(address==""){
+            alert("Please Enter Your Adrress")
+        }else{
+            window.location.href=`https://api.whatsapp.com/send?phone=+919965630426&text=Hi%2C%20I'm%20${name}.%0AI%20want%20the%20following%20product%20from%20you%0APRODUCT%20DETAILS%20%3A-%0ANAME%20%3A%20${title}%0APRICE%20%3A%20Rs.${rate}`
+        }
+
     }
 
   return (
@@ -66,10 +72,10 @@ const OrderItem = () => {
                 <Typography variant='h5' color='#1976d2'>SIGN IN BEFORE ORDER</Typography>
 
                 <MyInputLabel>Enter Your Name :</MyInputLabel>
-                <MyTextField size='small' name='name' onChange={console.log("Hello")}/>
+                <MyTextField size='small' name='name' onChange={(e)=>changeName(e)}/>
 
                 <MyInputLabel>Enter Your Mobile Number :</MyInputLabel>
-                <MyTextField size='small' name='number' value={number} onChange={changeName('n')}/>
+                <MyTextField size='small' name='number' onChange={(e)=>changeNumber(e)}/>
 
                 <MyInputLabel>Enter Your Address :</MyInputLabel>
                 <MyTextField size='small' name='address' onChange={(e)=>changeAddress(e)}/>
