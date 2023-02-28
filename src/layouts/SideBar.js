@@ -1,6 +1,5 @@
 import { Link, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { data } from "../data/sideBarData";
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';

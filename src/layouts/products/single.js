@@ -1,6 +1,5 @@
-import { Remove } from '@mui/icons-material'
-import { Box, Button, Container, List, Rating, Typography } from '@mui/material'
-import { height, Stack } from '@mui/system'
+import { Box, Button, Container, Rating, Typography } from '@mui/material'
+import {  Stack } from '@mui/material'
 import React, { useContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { Context } from '../../Router'
@@ -35,12 +34,8 @@ const Single = () => {
         api(id)
     }, [])
 
-    function msg(){
-        console.log('welcome');
-        navigate('https://api.whatsapp.com')
-    }
 
-    const cartItems = users.cart
+    const cartItems = users.cart;
 
     return (
         <Box>

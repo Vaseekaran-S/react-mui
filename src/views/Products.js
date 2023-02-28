@@ -8,8 +8,6 @@ const Products = () => {
 
   const { users } = useContext(Context)
 
-  console.log("DATA : ",users.products);
-
   return (
     <Layout>
       {(users.products.length == 0) ? (

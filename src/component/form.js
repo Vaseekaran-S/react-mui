@@ -29,7 +29,7 @@ const Form = () => {
 
     const formik = useFormik({
         initialValues: {
-            name: '',
+            name: 'vasi',
             email: 'foobar@example.com',
             password: 'foobar',
           },
@@ -42,8 +42,8 @@ const Form = () => {
   return (
     <Box display='flex' alignItems='center' justifyContent='center' height='90%'>
             <form onSubmit={formik.handleChange}>
-                <MyInputLabel variant='h5' >Name : </MyInputLabel>
-                <MyTextField 
+                <InputLabel variant='h5' >Name : </InputLabel>
+                <TextField 
                     id="email"
                     name="email"
                     placeholder='ENTER YOUR NAME'
@@ -51,8 +51,8 @@ const Form = () => {
                     onChange={formik.handleChange}
                 />
 
-                <MyInputLabel variant='h5' >Mail : </MyInputLabel>
-                <MyTextField 
+                <InputLabel variant='h5' >Mail : </InputLabel>
+                <TextField 
                     id="email"
                     name="email"
                     placeholder='ENTER YOUR MAIL ID'
@@ -62,8 +62,8 @@ const Form = () => {
                     helperText={formik.touched.email && formik.errors.email}              
                 />
 
-                <MyInputLabel variant='h5' >Password : </MyInputLabel>
-                <MyTextField 
+                <InputLabel variant='h5' >Password : </InputLabel>
+                <TextField 
                     id="password"
                     name="password"
                     placeholder='ENTER YOUR ADDRESS'

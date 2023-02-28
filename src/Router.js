@@ -21,6 +21,8 @@ const Router = () => {
     price : 0
   });
 
+  console.log("CART : ",users.cart);
+
   function api() {
     fetch('https://fakestoreapi.com/products')
       .then(res => res.json())
@@ -55,7 +57,6 @@ const Router = () => {
 
         const value = users.cart
         setUsers((users.price -= payload.price).toFixed(2))
-        console.log("Rate : ",users.price);
         const final = value.filter(product => (payload.id !== product.id))
         setUsers({ ...users, cart: final });
         return;
