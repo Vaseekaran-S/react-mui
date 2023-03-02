@@ -10,6 +10,7 @@ import Products from './views/Products';
 import ProductDetails from './layouts/products/productDetails';
 import OrderItem from './component/order';
 import Login from './views/Login';
+import SignIn from './component/signIn/signIn';
 
 export const Context = createContext()
 
@@ -79,6 +80,7 @@ const Router = () => {
           <Route path='components' element={<Products />} />
           <Route path='components/products/:id' element={<ProductDetails />} />
           <Route path='components/products/order/:id' element={<OrderItem />} />
+          <Route path='signin' element={<SignIn />} />
 
         </Routes>
       </BrowserRouter>

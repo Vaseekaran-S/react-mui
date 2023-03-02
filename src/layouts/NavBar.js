@@ -3,12 +3,15 @@ import { useContext, useState } from "react";
 import CartItems from "../component/products/cart";
 import { Context } from "../Router";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
 
     const [card, setCard] = useState(false);
 
     const { users } = useContext(Context)
+
+    const navigate = useNavigate()
 
     return (
         <Box position="inline">
@@ -28,7 +31,7 @@ export default function NavBar() {
                                 <ShoppingCartIcon sx={{ color: 'white' }} />
                             </Badge>
                         </IconButton>
-                        <Avatar sx={{ backgroundColor: 'black' }}>V</Avatar>
+                        <Avatar sx={{ backgroundColor: 'black' }} onClick={()=>navigate('/signin')}>V</Avatar>
 
                     </Box>
                 </Toolbar>

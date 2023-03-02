@@ -1,5 +1,5 @@
-import Form from "../component/form";
-import LoginForm from "../component/login";
+import Form from "../component/forms/form";
+import LoginForm from "../component/forms/login";
 import Layout from "../layouts/Layout";
 
 
