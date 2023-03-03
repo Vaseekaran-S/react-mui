@@ -30,8 +30,8 @@ export const data = [
     },
     {
         icon:<PeopleAltIcon/>,
-        text:'PEOPLE',
-        url:'/people'
+        text:'ADMIN',
+        url:'/admin'
     },
     {
         icon:<ModeOfTravelIcon/>,

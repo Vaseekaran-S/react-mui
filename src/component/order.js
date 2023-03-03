@@ -4,6 +4,8 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Layout from '../layouts/Layout'
 import { useState } from "react";
+import { db } from '../config'
+import { addDoc, collection } from 'firebase/firestore'
 
 const MyTextField = styled(TextField)({
     width:'400px'
@@ -15,6 +17,8 @@ const MyInputLabel = styled(InputLabel)({
 })
 
 const OrderItem = () => {
+
+    const creatData = collection(db,"orders");
 
     const { id } = useParams()
 
@@ -51,7 +55,7 @@ const OrderItem = () => {
         setAddress(e.target.value);
     }
 
-    function submit(){
+    async function submit(){
 
         if(name==""){
             alert("Please Enter Your Name")
@@ -60,6 +64,14 @@ const OrderItem = () => {
         }else if(address==""){
             alert("Please Enter Your Adrress")
         }else{
+
+            await addDoc(creatData,{
+                name: name,
+                number : number,
+                productName : title,
+                price : rate
+            })
+
             window.location.href=`https://api.whatsapp.com/send?phone=+919965630426&text=Hi%2C%20I'm%20${name}.%0AI%20want%20the%20following%20product%20from%20you%0APRODUCT%20DETAILS%20%3A-%0ANAME%20%3A%20${title}%0APRICE%20%3A%20Rs.${rate}`
         }
 

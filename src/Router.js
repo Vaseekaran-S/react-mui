@@ -11,6 +11,7 @@ import ProductDetails from './layouts/products/productDetails';
 import OrderItem from './component/order';
 import Login from './views/Login';
 import SignIn from './component/signIn/signIn';
+import Admin from './component/admin/Admin';
 
 export const Context = createContext()
 
@@ -81,6 +82,8 @@ const Router = () => {
           <Route path='components/products/:id' element={<ProductDetails />} />
           <Route path='components/products/order/:id' element={<OrderItem />} />
           <Route path='signin' element={<SignIn />} />
+          <Route path='admin' element={<Admin />} />
+
 
         </Routes>
       </BrowserRouter>
