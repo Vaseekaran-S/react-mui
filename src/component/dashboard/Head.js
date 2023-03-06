@@ -16,31 +16,17 @@ const MyList = styled(List)({
     display: 'flex', height: '30px'
 })
 
-const Head = () => {
-
-    const data = [
-        {
-            action: '/dashboard/account',
-            text: 'Accounts'
-        },
-        {
-            action: '/dashboard/portfolio',
-            text: 'Portfolio'
-        },
-        {
-            action: '/dashboard/transaction',
-            text: 'Pay & Transfer'
-        }
-    ]
+const Head = ({data}) => {
 
     const navigate = useNavigate()
+    const info = data;
 
     return (
         <ThemeProvider theme={theme}>
             <Box sx={{ bgcolor: theme.palette.primary.main, color: 'white' }}>
                 <Container maxWidth="xl">
                     <MyList>
-                        {data.map(e => {
+                        {info.map(e => {
                             return (
                                 <ListItem sx={{width:{sm:'20%'},padding:'0px'}}>
                                     <ListItemButton onClick={()=>{

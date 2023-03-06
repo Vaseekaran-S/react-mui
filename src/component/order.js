@@ -72,7 +72,7 @@ const OrderItem = () => {
                 price : rate
             })
 
-            window.location.href=`https://api.whatsapp.com/send?phone=+919965630426&text=Hi%2C%20I'm%20${name}.%0AI%20want%20the%20following%20product%20from%20you%0APRODUCT%20DETAILS%20%3A-%0ANAME%20%3A%20${title}%0APRICE%20%3A%20Rs.${rate}`
+            window.open(`https://api.whatsapp.com/send?phone=+919965630426&text=Hi%2C%20I'm%20${name}.%0AI%20want%20the%20following%20product%20from%20you%0APRODUCT%20DETAILS%20%3A-%0ANAME%20%3A%20${title}%0APRICE%20%3A%20Rs.${rate}`)
         }
 
     }

@@ -6,9 +6,25 @@ import Layout from "../layouts/Layout";
 
 
 export default function Dashboard({children}){
+
+    const data = [
+        {
+            action: '/dashboard/account',
+            text: 'Accounts'
+        },
+        {
+            action: '/dashboard/portfolio',
+            text: 'Portfolio'
+        },
+        {
+            action: '/dashboard/transaction',
+            text: 'Pay & Transfer'
+        }
+    ]
+
     return(
         <Layout>
-            <Head/>
+            <Head data={data}/>
             <Data/>
             {children}
         </Layout>

@@ -11,7 +11,7 @@ import ProductDetails from './layouts/products/productDetails';
 import OrderItem from './component/order';
 import Login from './views/Login';
 import SignIn from './component/signIn/signIn';
-import Admin from './component/admin/Admin';
+import Admin from './views/Admin';
 
 export const Context = createContext()
 
